@@ -40,21 +40,5 @@
             <version>2.9.9</version>
         </dependency>
 
-        <!--aop-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.8.10</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-        </dependency>
-        <!--end aop-->
     </dependencies>
 </project>
