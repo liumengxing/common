@@ -70,18 +70,7 @@ public abstract class UnitTestTemplate<T extends JujuRequest> {
 
     public void doPost(MockMvc mvc) throws Exception {
         //检查
-        if (mvc == null) {
-            throw new Exception();
-        }
-        if (StringUtils.isEmpty(url)) {
-            throw new Exception();
-        }
-        if (mapper == null) {
-            throw new Exception();
-        }
-        if (request == null) {
-            throw new Exception();
-        }
+        checkBefore(mvc);
 
         try {
 
@@ -97,18 +86,7 @@ public abstract class UnitTestTemplate<T extends JujuRequest> {
 
     public void doPut(MockMvc mvc) throws Exception {
         //检查
-        if (mvc == null) {
-            throw new Exception();
-        }
-        if (StringUtils.isEmpty(url)) {
-            throw new Exception();
-        }
-        if (mapper == null) {
-            throw new Exception();
-        }
-        if (request == null) {
-            throw new Exception();
-        }
+        checkBefore(mvc);
 
         try {
             resultActions = mvc.perform(
@@ -123,6 +101,20 @@ public abstract class UnitTestTemplate<T extends JujuRequest> {
 
     public void doDelete(MockMvc mvc) throws Exception {
         //检查
+        checkBefore(mvc);
+
+        try {
+            resultActions = mvc.perform(
+                    delete(url).headers(headers)
+                            .contentType(MediaType.APPLICATION_JSON_UTF8)
+                            .content(mapper.writeValueAsString(request))
+            );
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    private void checkBefore(MockMvc mvc) throws Exception {
         if (mvc == null) {
             throw new Exception();
         }
@@ -134,16 +126,6 @@ public abstract class UnitTestTemplate<T extends JujuRequest> {
         }
         if (request == null) {
             throw new Exception();
-        }
-
-        try {
-            resultActions = mvc.perform(
-                    delete(url).headers(headers)
-                            .contentType(MediaType.APPLICATION_JSON_UTF8)
-                            .content(mapper.writeValueAsString(request))
-            );
-        } catch (Exception e) {
-            throw e;
         }
     }
 
