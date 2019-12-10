@@ -47,6 +47,12 @@
         </dependency>
 
         <!--others-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.35</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 </project>
